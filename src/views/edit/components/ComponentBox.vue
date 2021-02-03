@@ -1,5 +1,5 @@
 <template>
-  <div class="edit-box" :style="componentStyle">
+  <div class="component-box" :style="componentStyle">
     组件
   </div>
 </template>
@@ -22,7 +22,8 @@ export default {
 </script>
 
 <style scoped>
-.edit-box {
+.component-box {
+  position: absolute;
   background: red;
 }
 </style>
