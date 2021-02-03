@@ -2,8 +2,8 @@
   <div class="edit">
     <a-button type="primary" @click="addComponent('basicHistogram')">添加基础柱状图</a-button>
     <a-button type="primary" @click="addComponent('basicBarChart')">添加基础柱状图</a-button>
-    <a-button :disabled="actions.length === 0 ? true : false" @click="revoke">撤销</a-button>
-    <a-button :disabled="revokeActions.length === 0 ? true : false" @click="redo">重做</a-button>
+    <a-button :disabled="current > 0 ? false : true" @click="revoke">撤销</a-button>
+    <a-button :disabled="timeline.length - 1 > current ? false : true" @click="redo">重做</a-button>
   </div>
 </template>
 
@@ -16,23 +16,22 @@ export default {
     AButton: Button
   },
   computed: {
-    actions () {
-      return this.$store.state.actions
+    timeline () {
+      return this.$store.state.timeline
     },
-    revokeActions () {
-      return this.$store.state.revokeActions
+    current () {
+      return this.$store.state.current
     }
   },
   methods: {
     addComponent (componentName) {
-      this.$store.commit('saveAction', {name: 'addComponent', params: charts[componentName]})
       this.$store.commit('addComponent', charts[componentName])
     },
     revoke () {
-      this.$store.commit('revokeAction')
+      this.$store.commit('revoke')
     },
     redo () {
-      this.$store.commit('redoAction')
+      this.$store.commit('redo')
     }
   }
 }

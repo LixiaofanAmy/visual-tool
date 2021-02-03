@@ -7,29 +7,28 @@ export default new Vuex.Store({
   state: {
     visualName: '测试',
     components: [],
-    actions: [],
-    revokeActions: []
+    timeline: [[]],
+    current: 0,
+    limit: 1000
   },
   mutations: {
-    saveAction (state, params) {
-      state.actions.push(params)
-      state.revokeActions.length ? state.revokeActions = [] : null
+    revoke (state) {
+      state.current = state.current - 1
+      state.components = JSON.parse(JSON.stringify(state.timeline[state.current]))
     },
-    revokeAction (state) {
-      const action = state.actions.pop()
-      state.revokeActions.push(action)
-      this.commit(`${action.name}Revoke`, action.params)
+    redo (state) {
+      state.current = state.current + 1
+      state.components = JSON.parse(JSON.stringify(state.timeline[state.current]))
     },
-    redoAction (state) {
-      const action = state.revokeActions.pop()
-      state.actions.push(action)
-      this.commit(action.name, action.params)
+    changeTimeline (state) {
+      state.timeline = state.timeline.slice(0, state.current + 1)
+      state.timeline.push(JSON.parse(JSON.stringify(state.components)))
+      state.timeline = state.timeline.slice(-state.limit)
+      state.current = state.timeline.length - 1
     },
     addComponent (state, component) {
       state.components.push(component)
-    },
-    addComponentRevoke (state) {
-      state.components.pop()
+      this.commit('changeTimeline')
     }
   },
   actions: {
