@@ -9,7 +9,8 @@ export default new Vuex.Store({
     components: [],
     timeline: [[]],
     current: 0,
-    limit: 1000
+    limit: 1000,
+    currentComponent: {}
   },
   mutations: {
     revoke (state) {
@@ -29,6 +30,12 @@ export default new Vuex.Store({
     addComponent (state, component) {
       state.components.push(component)
       this.commit('changeTimeline')
+    },
+    changeCurrentComponent (state, component) {
+      state.currentComponent = component
+    },
+    changeBoxWidth (state, value) {
+      state.currentComponent.boxWidth = value
     }
   },
   actions: {
