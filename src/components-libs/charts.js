@@ -1,6 +1,7 @@
 // 基础柱状图
 export const basicHistogram = {
   type: 'basicHistogram',
+  typeName: '基础柱状图',
   active: false,
   zIndex: 0,
   boxWidth: 300,
@@ -12,14 +13,15 @@ export const basicHistogram = {
   filletPosition: '顶部',
   dataOptions: {
     type: '静态数据',
-    mapping: {x: 'x', y: 'y'},
-    data: [{x: 80, y: '一月'}, {x: 50, y: '二月'}, {x: 160, y: '三月'}, {x: 120, y: '四月'}, {x: 40, y: '五月'}]
+    mapping: { x: 'x', y: 'y' },
+    data: [{ x: 80, y: '一月' }, { x: 50, y: '二月' }, { x: 160, y: '三月' }, { x: 120, y: '四月' }, { x: 40, y: '五月' }]
   }
 }
 
 // 基础条形图
 export const basicBarChart = {
   type: 'basicBarChart',
+  typeName: '基础条形图',
   active: false,
   zIndex: 0,
   boxWidth: 300,
@@ -31,8 +33,8 @@ export const basicBarChart = {
   filletPosition: '顶部',
   dataOptions: {
     type: '静态数据',
-    mapping: {x: 'x', y: 'y'},
-    data: [{x: 80, y: '一月'}, {x: 50, y: '二月'}, {x: 160, y: '三月'}, {x: 120, y: '四月'}, {x: 40, y: '五月'}]
+    mapping: { x: 'x', y: 'y' },
+    data: [{ x: 80, y: '一月' }, { x: 50, y: '二月' }, { x: 160, y: '三月' }, { x: 120, y: '四月' }, { x: 40, y: '五月' }]
   }
 }
 
