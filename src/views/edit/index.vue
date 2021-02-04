@@ -2,29 +2,20 @@
   <div class="edit">
     <func-button></func-button>
     <box-attributes></box-attributes>
-    <component-box :component="currentComponent"></component-box>
+    <canvas-panel></canvas-panel>
   </div>
 </template>
 
 <script>
-import charts from '@/components-libs/charts'
 import FuncButton from './components/FuncButton'
-import ComponentBox from './components/ComponentBox'
 import BoxAttributes from './components/BoxAttributes'
+import CanvasPanel from './components/CanvasPanel'
 export default {
   name: 'edit',
   components: {
     FuncButton,
-    ComponentBox,
-    BoxAttributes
-  },
-  computed: {
-    currentComponent () {
-      return this.$store.state.currentComponent
-    }
-  },
-  mounted () {
-    this.$store.commit('changeCurrentComponent', charts['basicHistogram'])
+    BoxAttributes,
+    CanvasPanel
   }
 }
 </script>

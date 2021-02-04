@@ -1,9 +1,9 @@
 <template>
-  <div class="box-attributes">
-    <a-input size="small" placeholder="宽" v-model="boxWidth" />
-    <a-input size="small" placeholder="高" v-model="boxHeight" />
-    <a-input size="small" placeholder="左" v-model="boxLeft" />
-    <a-input size="small" placeholder="上" v-model="boxTop" />
+  <div class="box-attributes" @mousedown.stop>
+    <a-input size="small" placeholder="宽" v-model.number="boxWidth" />
+    <a-input size="small" placeholder="高" v-model.number="boxHeight" />
+    <a-input size="small" placeholder="左" v-model.number="boxLeft" />
+    <a-input size="small" placeholder="上" v-model.number="boxTop" />
   </div>
 </template>
 
@@ -15,9 +15,16 @@ export default {
     AInput: Input
   },
   computed: {
+    currentIndex () {
+      return this.$store.state.currentIndex
+    },
     boxWidth: {
       get () {
-        return this.$store.state.currentComponent.boxWidth
+        if (this.currentIndex !== -1) {
+          return this.$store.state.components[this.currentIndex].boxWidth
+        } else {
+          return ''
+        }
       },
       set (v) {
         this.$store.commit('changeBoxWidth', v)
@@ -25,7 +32,11 @@ export default {
     },
     boxHeight: {
       get () {
-        return this.$store.state.currentComponent.boxHeight
+        if (this.currentIndex !== -1) {
+          return this.$store.state.components[this.currentIndex].boxHeight
+        } else {
+          return ''
+        }
       },
       set (v) {
         this.$store.commit('changeBoxHeight', v)
@@ -33,7 +44,11 @@ export default {
     },
     boxLeft: {
       get () {
-        return this.$store.state.currentComponent.boxLeft
+        if (this.currentIndex !== -1) {
+          return this.$store.state.components[this.currentIndex].boxLeft
+        } else {
+          return ''
+        }
       },
       set (v) {
         this.$store.commit('changeBoxLeft', v)
@@ -41,7 +56,11 @@ export default {
     },
     boxTop: {
       get () {
-        return this.$store.state.currentComponent.boxTop
+        if (this.currentIndex !== -1) {
+          return this.$store.state.components[this.currentIndex].boxTop
+        } else {
+          return ''
+        }
       },
       set (v) {
         this.$store.commit('changeBoxTop', v)

@@ -10,7 +10,7 @@ export default new Vuex.Store({
     timeline: [[]],
     current: 0,
     limit: 1000,
-    currentComponent: {}
+    currentIndex: -1
   },
   mutations: {
     // 撤销
@@ -33,27 +33,44 @@ export default new Vuex.Store({
     // 添加组件
     addComponent (state, component) {
       state.components.push(component)
+      state.currentIndex = state.components.length - 1
+      this.commit('changeBoxState')
       this.commit('changeTimeline')
     },
-    // 设置当前组件
-    changeCurrentComponent (state, component) {
-      state.currentComponent = component
+    // 改变当前组件盒子状态
+    changeBoxState (state) {
+      for (let i = 0; i < state.components.length; i++) {
+        if (i === state.currentIndex) {
+          state.components[i].active = true
+        } else {
+          state.components[i].active = false
+        }
+      }
+    },
+    // 组件盒子被激活
+    changeBoxActivated (state, index) {
+      state.currentIndex = index
+      this.commit('changeBoxState')
+    },
+    // 组件盒子被抑制
+    changeBoxDeactivated (state, index) {
+      state.components[index].active = false
     },
     // 设置组件盒子宽度
-    changeBoxWidth (state, value) {
-      state.currentComponent.boxWidth = value
+    changeBoxWidth (state, boxWidth) {
+      state.components[state.currentIndex].boxWidth = boxWidth
     },
     // 设置组件盒子高度
-    changeBoxHeight (state, value) {
-      state.currentComponent.boxHeight = value
+    changeBoxHeight (state, boxHeight) {
+      state.components[state.currentIndex].boxHeight = boxHeight
     },
     // 设置组件盒子距左距离
-    changeBoxLeft (state, value) {
-      state.currentComponent.boxLeft = value
+    changeBoxLeft (state, boxLeft) {
+      state.components[state.currentIndex].boxLeft = boxLeft
     },
     // 设置组件盒子距上距离
-    changeBoxTop (state, value) {
-      state.currentComponent.boxTop = value
+    changeBoxTop (state, boxTop) {
+      state.components[state.currentIndex].boxTop = boxTop
     }
   },
   actions: {

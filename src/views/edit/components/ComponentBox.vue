@@ -1,29 +1,52 @@
 <template>
-  <div class="component-box" :style="componentStyle">
-    组件
-  </div>
+  <vue-drag-resize 
+    class="red"
+    :w="component.boxWidth" 
+    :h="component.boxHeight" 
+    :x="component.boxLeft" 
+    :y="component.boxTop" 
+    :isActive="component.active"
+    @activated="onActivated"
+    @deactivated="onDeactivated"
+    @resizing="onResizing"
+    @dragging="onDragging"
+    ></vue-drag-resize>
 </template>
 
 <script>
+import VueDragResize from 'vue-drag-resize'
 export default {
   name: 'EditBox',
-  props: ['component'],
+  props: ['component', 'index'],
+  components: {
+    VueDragResize
+  },
   computed: {
-    componentStyle () {
-      return {
-        width: this.component.boxWidth + 'px',
-        height: this.component.boxHeight + 'px',
-        left: this.component.boxLeft + 'px',
-        top: this.component.boxTop + 'px'
-      }
+    currentIndex () {
+      return this.$store.state.currentIndex
+    }
+  },
+  methods: {
+    onActivated () {
+      this.$store.commit('changeBoxActivated', this.index)
+    },
+    onDeactivated () {
+      this.$store.commit('changeBoxDeactivated', this.index)
+    },
+    onResizing (newRect) {
+      this.$store.commit('changeBoxWidth', newRect.width)
+      this.$store.commit('changeBoxHeight', newRect.height)
+    },
+    onDragging (newRect) {
+      this.$store.commit('changeBoxLeft', newRect.left)
+      this.$store.commit('changeBoxTop', newRect.top)
     }
   }
 }
 </script>
 
 <style scoped>
-.component-box {
-  position: absolute;
-  background: red;
+.red {
+  background: red
 }
 </style>

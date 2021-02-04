@@ -1,11 +1,12 @@
 // 基础柱状图
 export const basicHistogram = {
   type: 'basicHistogram',
+  active: false,
   zIndex: 0,
   boxWidth: 300,
   boxHeight: 200,
-  boxLeft: 810,
-  boxTop: 440,
+  boxLeft: 100,
+  boxTop: 150,
   spacing: 0.5,
   filletRadius: 0,
   filletPosition: '顶部',
@@ -19,6 +20,7 @@ export const basicHistogram = {
 // 基础条形图
 export const basicBarChart = {
   type: 'basicBarChart',
+  active: false,
   zIndex: 0,
   boxWidth: 300,
   boxHeight: 200,

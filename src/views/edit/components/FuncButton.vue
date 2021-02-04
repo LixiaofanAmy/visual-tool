@@ -16,6 +16,9 @@ export default {
     AButton: Button,
   },
   computed: {
+    components () {
+      return this.$store.state.components
+    },
     timeline () {
       return this.$store.state.timeline
     },
@@ -25,7 +28,7 @@ export default {
   },
   methods: {
     addComponent (componentName) {
-      this.$store.commit('addComponent', charts[componentName])
+      this.$store.commit('addComponent', {...charts[componentName]})
     },
     revoke () {
       this.$store.commit('revoke')
