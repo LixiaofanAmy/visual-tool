@@ -6,6 +6,7 @@
     :x="component.boxLeft" 
     :y="component.boxTop" 
     :isActive="component.active"
+    :z="index"
     @activated="onActivated"
     @deactivated="onDeactivated"
     @resizing="onResizing"

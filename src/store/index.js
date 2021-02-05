@@ -38,6 +38,9 @@ export default new Vuex.Store({
       this.commit('changeBoxState')
       this.commit('changeTimeline')
     },
+    changeComponents(state, components) {
+      state.components = components
+    },
     // 改变当前组件盒子状态
     changeBoxState(state) {
       for (let i = 0; i < state.components.length; i++) {

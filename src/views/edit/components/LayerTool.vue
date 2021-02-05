@@ -1,19 +1,32 @@
 <template>
   <div class="z-index">
-    <span
-      v-for="component in components"
-      :key="component.zIndex"
-      @click="changeLayer(component)"
-    >{{component.typeName}}</span>
+    <vuedraggable v-model="components">
+      <transition-group>
+        <div
+          v-for="component in components"
+          :key="component.zIndex"
+          @click="changeLayer(component)"
+        >{{component.typeName}}</div>
+      </transition-group>
+    </vuedraggable>
   </div>
 </template>
 
 <script>
+import vuedraggable from "vuedraggable";
 export default {
   name: 'LayerTool',
+  components: {
+    vuedraggable
+  },
   computed: {
-    components() {
-      return this.$store.state.components
+    components: {
+      get () {
+        return this.$store.state.components
+      },
+      set (v) {
+        this.$store.commit('changeComponents', v)
+      }
     }
   },
   methods: {
