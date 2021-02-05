@@ -36,7 +36,8 @@ export default {
       series: [{
           type: 'bar',
           data: seriesData
-      }]
+      }],
+      grid: { top: '20px', left: '30px', right: '20px', bottom: '20px' }
     }
     this.echartsBar.setOption(option);
   }

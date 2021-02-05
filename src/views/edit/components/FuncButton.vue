@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     addComponent (componentName) {
-      this.$store.commit('addComponent', {...charts[componentName]})
+      this.$store.commit('addComponent', {...charts[componentName], id: Date.now()})
     },
     revoke () {
       this.$store.commit('revoke')

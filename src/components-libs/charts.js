@@ -32,7 +32,7 @@ export const basicBarChart = {
   dataOptions: {
     type: '静态数据',
     mapping: { x: 'x', y: 'y' },
-    data: [{ x: '一月', y: 80 }, { x: '二月', y: 50 }, { x: '三月', y: 160 }, { x: '四月', y: 120 }, { x: '五月', y: 40 }]
+    data: [{ x: '二月', y: 50 }, { x: '三月', y: 160 }, { x: '四月', y: 120 }, { x: '五月', y: 40 }]
   }
 }
 
