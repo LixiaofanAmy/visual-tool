@@ -17,7 +17,9 @@ export default {
   },
   watch: {
     styleoptions () {
-      this.echartsBar.resize()
+      this.$nextTick(() => {
+        this.echartsBar.resize()
+      })
     }
   },
   mounted () {
