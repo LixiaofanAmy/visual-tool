@@ -6,7 +6,7 @@
     :x="component.boxLeft" 
     :y="component.boxTop" 
     :isActive="component.active"
-    :z="index"
+    :z="zIndex"
     @activated="onActivated"
     @deactivated="onDeactivated"
     @resizing="onResizing"
@@ -23,8 +23,11 @@ export default {
     VueDragResize
   },
   computed: {
-    currentIndex () {
-      return this.$store.state.currentIndex
+    components () {
+      return this.$store.state.components
+    },
+    zIndex () {
+      return this.components.length - this.index - 1
     }
   },
   methods: {

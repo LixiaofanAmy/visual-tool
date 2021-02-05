@@ -30,16 +30,17 @@ export default new Vuex.Store({
       state.timeline = state.timeline.slice(-state.limit)
       state.current = state.timeline.length - 1
     },
+    // 设置组件层级
+    changeComponents(state, components) {
+      state.components = components
+    },
     // 添加组件
     addComponent(state, component) {
       component.zIndex = state.components.length
-      state.components.push(component)
-      state.currentIndex = state.components.length - 1
+      state.components.unshift(component)
+      state.currentIndex = 0
       this.commit('changeBoxState')
       this.commit('changeTimeline')
-    },
-    changeComponents(state, components) {
-      state.components = components
     },
     // 改变当前组件盒子状态
     changeBoxState(state) {

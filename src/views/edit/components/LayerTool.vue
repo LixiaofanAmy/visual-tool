@@ -1,13 +1,11 @@
 <template>
   <div class="z-index">
     <vuedraggable v-model="components">
-      <transition-group>
-        <div
-          v-for="component in components"
-          :key="component.zIndex"
-          @click="changeLayer(component)"
-        >{{component.typeName}}</div>
-      </transition-group>
+      <div
+        v-for="(component, index) in components"
+        :key="index"
+        @click="changeLayer(component)"
+      >{{component.typeName}}</div>
     </vuedraggable>
   </div>
 </template>
