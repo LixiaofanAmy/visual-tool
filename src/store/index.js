@@ -36,7 +36,6 @@ export default new Vuex.Store({
     },
     // 添加组件
     addComponent(state, component) {
-      component.zIndex = state.components.length
       state.components.unshift(component)
       state.currentIndex = 0
       this.commit('changeBoxState')

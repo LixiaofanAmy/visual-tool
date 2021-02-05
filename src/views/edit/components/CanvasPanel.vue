@@ -1,15 +1,19 @@
 <template>
   <div class="canvas-panel">
-    <component-box v-for="(component, index) in components" :key="index" :component="component" :index="index"></component-box>
+    <component-box v-for="(component, index) in components" :key="index" :component="component" :index="index">
+      <echarts-bar :component="component"></echarts-bar>
+    </component-box>
   </div>
 </template>
 
 <script>
 import ComponentBox from './ComponentBox'
+import EchartsBar from './EchartsBar'
 export default {
   name: 'CanvasPanel',
   components: {
-    ComponentBox
+    ComponentBox,
+    EchartsBar
   },
   computed: {
     components () {

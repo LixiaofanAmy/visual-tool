@@ -13,7 +13,7 @@ export const basicHistogram = {
   dataOptions: {
     type: '静态数据',
     mapping: { x: 'x', y: 'y' },
-    data: [{ x: 80, y: '一月' }, { x: 50, y: '二月' }, { x: 160, y: '三月' }, { x: 120, y: '四月' }, { x: 40, y: '五月' }]
+    data: [{ x: '一月', y: 80 }, { x: '二月', y: 50 }, { x: '三月', y: 160 }, { x: '四月', y: 120 }, { x: '五月', y: 40 }]
   }
 }
 
@@ -32,7 +32,7 @@ export const basicBarChart = {
   dataOptions: {
     type: '静态数据',
     mapping: { x: 'x', y: 'y' },
-    data: [{ x: 80, y: '一月' }, { x: 50, y: '二月' }, { x: 160, y: '三月' }, { x: 120, y: '四月' }, { x: 40, y: '五月' }]
+    data: [{ x: '一月', y: 80 }, { x: '二月', y: 50 }, { x: '三月', y: 160 }, { x: '四月', y: 120 }, { x: '五月', y: 40 }]
   }
 }
 

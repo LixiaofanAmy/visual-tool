@@ -1,6 +1,5 @@
 <template>
   <vue-drag-resize 
-    class="red"
     :w="component.boxWidth" 
     :h="component.boxHeight" 
     :x="component.boxLeft" 
@@ -11,7 +10,9 @@
     @deactivated="onDeactivated"
     @resizing="onResizing"
     @dragging="onDragging"
-    ></vue-drag-resize>
+    >
+    <slot></slot>
+  </vue-drag-resize>
 </template>
 
 <script>
