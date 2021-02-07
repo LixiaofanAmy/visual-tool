@@ -6,6 +6,7 @@
     :y="component.boxTop" 
     :isActive="component.active"
     :z="zIndex"
+    :parentLimitation="true"
     @activated="onActivated"
     @deactivated="onDeactivated"
     @resizing="onResizing"

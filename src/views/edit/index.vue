@@ -3,7 +3,7 @@
     <func-button></func-button>
     <box-attributes></box-attributes>
     <layer-tool></layer-tool>
-    <canvas-panel></canvas-panel>
+    <canvas-body></canvas-body>
   </div>
 </template>
 
@@ -11,17 +11,21 @@
 import FuncButton from './components/FuncButton'
 import BoxAttributes from './components/BoxAttributes'
 import LayerTool from './components/LayerTool'
-import CanvasPanel from './components/CanvasPanel'
+import CanvasBody from './components/CanvasBody'
 export default {
   name: 'edit',
   components: {
     FuncButton,
     BoxAttributes,
     LayerTool,
-    CanvasPanel
+    CanvasBody
   }
 }
 </script>
 
 <style scoped>
+.ruler-tool {
+  width: 550px;
+  height: 550px;
+}
 </style>

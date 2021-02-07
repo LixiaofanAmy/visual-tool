@@ -24,4 +24,9 @@ export default {
 </script>
 
 <style scoped>
+.canvas-panel {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+}
 </style>
