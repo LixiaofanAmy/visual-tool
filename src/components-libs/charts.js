@@ -7,6 +7,7 @@ export const basicHistogram = {
   boxHeight: 200,
   boxLeft: 100,
   boxTop: 150,
+  seriesType: 'bar',
   spacing: 0.5,
   filletRadius: 0,
   filletPosition: '顶部',
@@ -20,12 +21,13 @@ export const basicHistogram = {
 // 基础条形图
 export const basicBarChart = {
   type: 'basicBarChart',
-  typeName: '基础条形图',
+  typeName: '基础折线图',
   active: false,
   boxWidth: 300,
   boxHeight: 200,
   boxLeft: 810,
   boxTop: 440,
+  seriesType: 'line',
   spacing: 0.5,
   filletRadius: 0,
   filletPosition: '顶部',

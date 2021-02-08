@@ -36,7 +36,7 @@ export default {
       },
       yAxis: {},
       series: [{
-          type: 'bar',
+          type: this.component.seriesType,
           data: seriesData
       }],
       grid: { top: '20px', left: '30px', right: '20px', bottom: '20px' }
