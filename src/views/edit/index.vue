@@ -1,66 +1,40 @@
 <template>
-  <div class="edit">
-    <div class="edit-header">
+  <layout-box>
+    <template v-slot:editHeader>
       <func-button></func-button>
-    </div>
-    <div class="edit-container">
-      <div class="edit-container-left">
-        <layer-tool></layer-tool>
-      </div>
-      <div class="edit-container-main">
-        <canvas-body></canvas-body>
-      </div>
-      <div class="edit-container-right">
-        <box-attributes></box-attributes>
-      </div>
-    </div>
-  </div>
+    </template>
+    <template v-slot:editContainerLeft>
+      <layer-tool></layer-tool>
+    </template>
+    <template v-slot:editContainerMain>
+      <canvas-body></canvas-body>
+    </template>
+    <template v-slot:editContainerRight>
+      <box-attributes></box-attributes>
+      <bar-attributes></bar-attributes>
+    </template>
+  </layout-box>
 </template>
 
 <script>
+import LayoutBox from './components/LayoutBox'
 import FuncButton from './components/FuncButton'
-import BoxAttributes from './components/BoxAttributes'
 import LayerTool from './components/LayerTool'
 import CanvasBody from './components/CanvasBody'
+import BoxAttributes from './components/BoxAttributes'
+import BarAttributes from '@/components/BarAttributes'
 export default {
   name: 'edit',
   components: {
-    FuncButton,
-    BoxAttributes,
+    LayoutBox,
+    FuncButton, 
     LayerTool,
-    CanvasBody
+    CanvasBody,
+    BoxAttributes,
+    BarAttributes
   }
 }
 </script>
 
 <style scoped>
-.edit {
-  width: 100%;
-  height: 100%;
-}
-.edit-header {
-  height: 55px;
-  border-bottom: 1px solid #DEDEDE;
-}
-.edit-container {
-  display: flex;
-  height: calc(100% - 56px);
-}
-.edit-container-left {
-  width: 199px;
-  height: 100%;
-  border-right: 1px solid #DEDEDE;
-  overflow: auto;
-}
-.edit-container-main {
-  width: calc(100% - 500px);
-  height: 100%;
-  overflow: auto;
-}
-.edit-container-right {
-  width: 299px;
-  height: 100%;
-  border-left: 1px solid #DEDEDE;
-  overflow: auto;
-}
 </style>

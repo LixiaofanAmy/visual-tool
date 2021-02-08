@@ -24,24 +24,21 @@ export default {
   },
   mounted () {
     this.echartsBar = echarts.init(this.$refs.echartsBar)
-    let xAxisData = []
-    let seriesData = []
-    for (let i = 0; i < this.component.dataOptions.data.length; i++) {
-      xAxisData.push(this.component.dataOptions.data[i].x)
-      seriesData.push(this.component.dataOptions.data[i].y)
+    this.$store.commit('setEchartsObject', this.echartsBar)
+    switch (this.component.seriesType) {
+      case 'bar':
+        this.$store.commit('setbasicHistogram')
+        break
+      case 'line':
+        this.$store.commit('basicLineChart')
+        break
+      case 'pie':
+        this.$store.commit('basicPieChart')
+        break
+      default:
+        break
     }
-    var option = {
-      xAxis: {
-          data: xAxisData
-      },
-      yAxis: {},
-      series: [{
-          type: this.component.seriesType,
-          data: seriesData
-      }],
-      grid: { top: '20px', left: '30px', right: '20px', bottom: '20px' }
-    }
-    this.echartsBar.setOption(option);
+    
   }
 }
 </script>

@@ -4,7 +4,8 @@
       <a-button size="small" :disabled="current > 0 ? false : true" @click="revoke">撤销</a-button>
       <a-button size="small" :disabled="timeline.length - 1 > current ? false : true" @click="redo">重做</a-button>
       <a-button size="small" type="primary" @click="addComponent('basicHistogram')">基础柱状图</a-button>
-      <a-button size="small" type="primary" @click="addComponent('basicBarChart')">基础折线图</a-button>
+      <a-button size="small" type="primary" @click="addComponent('basicLineChart')">基础折线图</a-button>
+      <a-button size="small" type="primary" @click="addComponent('basicPieChart')">基础饼图</a-button>
     </a-space>
   </div>
 </template>

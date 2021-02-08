@@ -5,12 +5,10 @@ export const basicHistogram = {
   active: false,
   boxWidth: 300,
   boxHeight: 200,
-  boxLeft: 100,
-  boxTop: 150,
+  boxLeft: 0,
+  boxTop: 0,
   seriesType: 'bar',
   spacing: 0.5,
-  filletRadius: 0,
-  filletPosition: '顶部',
   dataOptions: {
     type: '静态数据',
     mapping: { x: 'x', y: 'y' },
@@ -18,19 +16,35 @@ export const basicHistogram = {
   }
 }
 
-// 基础条形图
-export const basicBarChart = {
-  type: 'basicBarChart',
+// 基础折线图
+export const basicLineChart = {
+  type: 'basicLineChart',
   typeName: '基础折线图',
   active: false,
   boxWidth: 300,
   boxHeight: 200,
-  boxLeft: 810,
-  boxTop: 440,
+  boxLeft: 300,
+  boxTop: 0,
   seriesType: 'line',
   spacing: 0.5,
-  filletRadius: 0,
-  filletPosition: '顶部',
+  dataOptions: {
+    type: '静态数据',
+    mapping: { x: 'x', y: 'y' },
+    data: [{ x: '二月', y: 50 }, { x: '三月', y: 160 }, { x: '四月', y: 120 }, { x: '五月', y: 40 }]
+  }
+}
+
+// 基础饼状图
+export const basicPieChart = {
+  type: 'basicPieChart',
+  typeName: '基础饼状图',
+  active: false,
+  boxWidth: 300,
+  boxHeight: 200,
+  boxLeft: 600,
+  boxTop: 0,
+  seriesType: 'pie',
+  spacing: 0.5,
   dataOptions: {
     type: '静态数据',
     mapping: { x: 'x', y: 'y' },
@@ -40,5 +54,6 @@ export const basicBarChart = {
 
 export default {
   basicHistogram,
-  basicBarChart
+  basicLineChart,
+  basicPieChart
 }

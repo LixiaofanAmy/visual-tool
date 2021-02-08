@@ -32,7 +32,11 @@ export default new Vuex.Store({
     // 操作时间线
     changeTimeline(state) {
       state.timeline = state.timeline.slice(0, state.current + 1)
-      state.timeline.push(JSON.parse(JSON.stringify(state.components)))
+      let components = {...state.components}
+      for (let i = 0; i < components.length; i++) {
+        components[i].dataOptions = JSON.parse(JSON.stringify(components[i].dataOptions))
+      }
+      state.timeline.push(components)
       state.timeline = state.timeline.slice(-state.limit)
       state.current = state.timeline.length - 1
     },
@@ -81,6 +85,79 @@ export default new Vuex.Store({
     // 设置组件盒子距上距离
     changeBoxTop(state, boxTop) {
       state.components[state.currentIndex].boxTop = boxTop
+    },
+    setEchartsObject (state, echartsObject) {
+      state.components[state.currentIndex].echartsObject = echartsObject
+    },
+    // 设置基础柱状图样式
+    setbasicHistogram (state) {
+      let xAxisData = []
+      let seriesData = []
+      const component = state.components[state.currentIndex]
+      for (let i = 0; i < component.dataOptions.data.length; i++) {
+        xAxisData.push(component.dataOptions.data[i].x)
+        seriesData.push(component.dataOptions.data[i].y)
+      }
+      let spacing = `${component.spacing*100}%`
+      var option = {
+        xAxis: {
+            data: xAxisData
+        },
+        yAxis: {},
+        series: [{
+            type: component.seriesType,
+            data: seriesData,
+            barCategoryGap: spacing
+        }],
+        grid: { top: '20px', left: '30px', right: '20px', bottom: '20px' }
+      }
+      component.echartsObject.setOption(option)
+    },
+    // 设置基础折线图样式
+    basicLineChart (state) {
+      let xAxisData = []
+      let seriesData = []
+      const component = state.components[state.currentIndex]
+      for (let i = 0; i < component.dataOptions.data.length; i++) {
+        xAxisData.push(component.dataOptions.data[i].x)
+        seriesData.push(component.dataOptions.data[i].y)
+      }
+      var option = {
+        xAxis: {
+            data: xAxisData
+        },
+        yAxis: {},
+        series: [{
+            type: component.seriesType,
+            data: seriesData
+        }],
+        grid: { top: '20px', left: '30px', right: '20px', bottom: '20px' }
+      }
+      component.echartsObject.setOption(option)
+    },
+    // 设置基础饼图
+    basicPieChart (state) {
+      let seriesData = []
+      const component = state.components[state.currentIndex]
+      for (let i = 0; i < component.dataOptions.data.length; i++) {
+        seriesData.push({
+          name: component.dataOptions.data[i].x,
+          value: component.dataOptions.data[i].y
+        })
+      }
+      var option = {
+        series: [{
+            type: component.seriesType,
+            data: seriesData
+        }],
+        grid: { top: '20px', left: '30px', right: '20px', bottom: '20px' }
+      }
+      component.echartsObject.setOption(option);
+    },
+    // 设置柱间距
+    setSpacing (state, spacing) {
+      state.components[state.currentIndex].spacing = spacing
+      this.commit('setbasicHistogram')
     }
   },
   actions: {

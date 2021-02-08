@@ -1,6 +1,6 @@
 <template>
   <div class="box-attributes" @mousedown.stop>
-    <div>属性</div>
+    <div>位置大小</div>
     <a-input size="small" placeholder="宽" v-model.number="boxWidth" />
     <a-input size="small" placeholder="高" v-model.number="boxHeight" />
     <a-input size="small" placeholder="左" v-model.number="boxLeft" />
