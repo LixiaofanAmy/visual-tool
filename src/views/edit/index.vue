@@ -1,24 +1,40 @@
 <template>
-  <div class="edit">
-    <func-button></func-button>
-    <box-attributes></box-attributes>
-    <layer-tool></layer-tool>
-    <canvas-panel></canvas-panel>
-  </div>
+  <layout-box>
+    <template v-slot:editHeader>
+      <visual-name></visual-name>
+      <func-button></func-button>
+    </template>
+    <template v-slot:editContainerLeft>
+      <layer-tool></layer-tool>
+    </template>
+    <template v-slot:editContainerMain>
+      <canvas-body></canvas-body>
+    </template>
+    <template v-slot:editContainerRight>
+      <box-attributes></box-attributes>
+      <bar-attributes></bar-attributes>
+    </template>
+  </layout-box>
 </template>
 
 <script>
+import LayoutBox from './components/LayoutBox'
+import VisualName from './components/VisualName'
 import FuncButton from './components/FuncButton'
-import BoxAttributes from './components/BoxAttributes'
 import LayerTool from './components/LayerTool'
-import CanvasPanel from './components/CanvasPanel'
+import CanvasBody from './components/CanvasBody'
+import BoxAttributes from './components/BoxAttributes'
+import BarAttributes from './components/BarAttributes'
 export default {
   name: 'edit',
   components: {
-    FuncButton,
-    BoxAttributes,
+    LayoutBox,
+    VisualName,
+    FuncButton, 
     LayerTool,
-    CanvasPanel
+    CanvasBody,
+    BoxAttributes,
+    BarAttributes
   }
 }
 </script>

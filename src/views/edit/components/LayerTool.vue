@@ -1,25 +1,39 @@
 <template>
   <div class="z-index">
-    <span
-      v-for="component in components"
-      :key="component.zIndex"
-      @click="changeLayer(component)"
-    >{{component.typeName}}</span>
+    <vuedraggable v-model="_components">
+      <div
+        v-for="(component, index) in _components"
+        :key="index"
+        @click="changeLayer(component)"
+      >{{component.typeName}}</div>
+    </vuedraggable>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+import vuedraggable from "vuedraggable";
 export default {
   name: 'LayerTool',
+  components: {
+    vuedraggable
+  },
   computed: {
-    components() {
-      return this.$store.state.components
+    ...mapState(['components']),
+    _components: {
+      get () {
+        return this.components
+      },
+      set (v) {
+        this.changeComponents(v)
+      }
     }
   },
   methods: {
+    ...mapMutations(['changeComponents', 'changeBoxActivated']),
     changeLayer(component) {
       const index = this.components.indexOf(component)
-      this.$store.commit('changeBoxActivated', index)
+      this.changeBoxActivated(index)
     }
   }
 }

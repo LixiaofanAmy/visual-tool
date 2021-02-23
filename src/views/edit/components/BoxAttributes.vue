@@ -1,5 +1,6 @@
 <template>
   <div class="box-attributes" @mousedown.stop>
+    <div>位置大小</div>
     <a-input size="small" placeholder="宽" v-model.number="boxWidth" />
     <a-input size="small" placeholder="高" v-model.number="boxHeight" />
     <a-input size="small" placeholder="左" v-model.number="boxLeft" />
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import { Input } from 'ant-design-vue'
 export default {
   name: 'BoxAttributes',
@@ -15,57 +17,58 @@ export default {
     AInput: Input
   },
   computed: {
-    currentIndex () {
-      return this.$store.state.currentIndex
-    },
+    ...mapState(['currentIndex', 'components']),
     boxWidth: {
       get () {
         if (this.currentIndex !== -1) {
-          return this.$store.state.components[this.currentIndex].boxWidth
+          return this.components[this.currentIndex].boxWidth
         } else {
           return ''
         }
       },
       set (v) {
-        this.$store.commit('changeBoxWidth', v)
+        this.changeBoxWidth(v)
       }
     },
     boxHeight: {
       get () {
         if (this.currentIndex !== -1) {
-          return this.$store.state.components[this.currentIndex].boxHeight
+          return this.components[this.currentIndex].boxHeight
         } else {
           return ''
         }
       },
       set (v) {
-        this.$store.commit('changeBoxHeight', v)
+        this.changeBoxHeight(v)
       }
     },
     boxLeft: {
       get () {
         if (this.currentIndex !== -1) {
-          return this.$store.state.components[this.currentIndex].boxLeft
+          return this.components[this.currentIndex].boxLeft
         } else {
           return ''
         }
       },
       set (v) {
-        this.$store.commit('changeBoxLeft', v)
+        this.changeBoxLeft(v)
       }
     },
     boxTop: {
       get () {
         if (this.currentIndex !== -1) {
-          return this.$store.state.components[this.currentIndex].boxTop
+          return this.components[this.currentIndex].boxTop
         } else {
           return ''
         }
       },
       set (v) {
-        this.$store.commit('changeBoxTop', v)
+        this.changeBoxTop(v)
       }
     }
+  },
+  methods: {
+    ...mapMutations(['changeBoxWidth', 'changeBoxHeight', 'changeBoxLeft', 'changeBoxTop'])
   }
 }
 </script>
