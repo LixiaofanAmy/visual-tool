@@ -19,56 +19,61 @@ export default {
   computed: {
     ...mapState(['currentIndex', 'components']),
     boxWidth: {
-      get () {
+      get() {
         if (this.currentIndex !== -1) {
           return this.components[this.currentIndex].boxWidth
         } else {
           return ''
         }
       },
-      set (v) {
+      set(v) {
         this.changeBoxWidth(v)
       }
     },
     boxHeight: {
-      get () {
+      get() {
         if (this.currentIndex !== -1) {
           return this.components[this.currentIndex].boxHeight
         } else {
           return ''
         }
       },
-      set (v) {
+      set(v) {
         this.changeBoxHeight(v)
       }
     },
     boxLeft: {
-      get () {
+      get() {
         if (this.currentIndex !== -1) {
           return this.components[this.currentIndex].boxLeft
         } else {
           return ''
         }
       },
-      set (v) {
+      set(v) {
         this.changeBoxLeft(v)
       }
     },
     boxTop: {
-      get () {
+      get() {
         if (this.currentIndex !== -1) {
           return this.components[this.currentIndex].boxTop
         } else {
           return ''
         }
       },
-      set (v) {
+      set(v) {
         this.changeBoxTop(v)
       }
     }
   },
   methods: {
-    ...mapMutations(['changeBoxWidth', 'changeBoxHeight', 'changeBoxLeft', 'changeBoxTop'])
+    ...mapMutations([
+      'changeBoxWidth',
+      'changeBoxHeight',
+      'changeBoxLeft',
+      'changeBoxTop'
+    ])
   }
 }
 </script>

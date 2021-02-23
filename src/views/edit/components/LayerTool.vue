@@ -12,7 +12,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import vuedraggable from "vuedraggable";
+import vuedraggable from 'vuedraggable'
 export default {
   name: 'LayerTool',
   components: {
@@ -21,10 +21,10 @@ export default {
   computed: {
     ...mapState(['components']),
     _components: {
-      get () {
+      get() {
         return this.components
       },
-      set (v) {
+      set(v) {
         this.changeComponents(v)
       }
     }
@@ -39,5 +39,5 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 </style>

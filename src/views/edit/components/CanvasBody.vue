@@ -15,7 +15,7 @@ export default {
     VueRulerTool,
     CanvasPanel
   },
-  data () {
+  data() {
     return {
       // presetLine: [{ type: 'h', site: 200 }, { type: 'v', site: 100 }]
       presetLine: []

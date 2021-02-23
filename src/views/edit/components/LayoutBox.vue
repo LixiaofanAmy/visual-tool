@@ -31,7 +31,7 @@ export default {
 .edit-header {
   position: relative;
   height: 55px;
-  border-bottom: 1px solid #DEDEDE;
+  border-bottom: 1px solid #dedede;
 }
 .edit-container {
   display: flex;
@@ -40,7 +40,7 @@ export default {
 .edit-container-left {
   width: 199px;
   height: 100%;
-  border-right: 1px solid #DEDEDE;
+  border-right: 1px solid #dedede;
   overflow: auto;
 }
 .edit-container-main {
@@ -51,7 +51,7 @@ export default {
 .edit-container-right {
   width: 299px;
   height: 100%;
-  border-left: 1px solid #DEDEDE;
+  border-left: 1px solid #dedede;
   overflow: auto;
 }
 </style>

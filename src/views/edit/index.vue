@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
   <layout-box>
     <template v-slot:editHeader>
@@ -40,4 +41,45 @@ export default {
 </script>
 
 <style scoped>
+=======
+<template>
+  <layout-box>
+    <template v-slot:editHeader>
+      <func-button></func-button>
+    </template>
+    <template v-slot:editContainerLeft>
+      <layer-tool></layer-tool>
+    </template>
+    <template v-slot:editContainerMain>
+      <canvas-body></canvas-body>
+    </template>
+    <template v-slot:editContainerRight>
+      <box-attributes></box-attributes>
+      <bar-attributes></bar-attributes>
+    </template>
+  </layout-box>
+</template>
+
+<script>
+import LayoutBox from './components/LayoutBox'
+import FuncButton from './components/FuncButton'
+import LayerTool from './components/LayerTool'
+import CanvasBody from './components/CanvasBody'
+import BoxAttributes from './components/BoxAttributes'
+import BarAttributes from '@/components/BarAttributes'
+export default {
+  name: 'edit',
+  components: {
+    LayoutBox,
+    FuncButton, 
+    LayerTool,
+    CanvasBody,
+    BoxAttributes,
+    BarAttributes
+  }
+}
+</script>
+
+<style scoped>
+>>>>>>> dad6f6dff7978ea7fb73efcbb46df376c68fb0a7
 </style>
